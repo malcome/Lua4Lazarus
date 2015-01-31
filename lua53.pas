@@ -469,17 +469,17 @@ function luaL_loadstring(L: Plua_State; const s: PAnsiChar): Integer; cdecl;
 function luaL_newstate: Plua_State; cdecl;
 function luaL_len(L: Plua_State; idx: Integer): lua_Integer; cdecl;
 function luaL_gsub(L: Plua_State; const s, p, r: PAnsiChar): PAnsiChar; cdecl;
-procedure luaL_setfuncs(L: Plua_State; lr: array of luaL_Reg; nup: Integer); overload;
+procedure luaL_setfuncs(L: Plua_State; lr: array of luaL_Reg; nup: Integer); inline; overload;
 procedure luaL_setfuncs(L: Plua_State; lr: PluaL_Reg; nup: Integer); cdecl; overload;
 function luaL_getsubtable(L: Plua_State; idx: Integer; const fname: PAnsiChar): Integer; cdecl;
 procedure luaL_traceback(L, L1: Plua_State; msg: PAnsiChar; level: Integer); cdecl;
 procedure luaL_requiref(L: Plua_State; const modname: PAnsiChar; openf: lua_CFunction; glb: LongBool); cdecl;
 
 // some useful macros
-procedure luaL_newlibtable(L: Plua_State; lr: array of luaL_Reg); overload;
-procedure luaL_newlibtable(L: Plua_State; lr: PluaL_Reg); overload;
-procedure luaL_newlib(L: Plua_State; lr: array of luaL_Reg); overload;
-procedure luaL_newlib(L: Plua_State; lr: PluaL_Reg); overload;
+procedure luaL_newlibtable(L: Plua_State; lr: array of luaL_Reg); inline; overload;
+procedure luaL_newlibtable(L: Plua_State; lr: PluaL_Reg); inline; overload;
+procedure luaL_newlib(L: Plua_State; lr: array of luaL_Reg); inline; overload;
+procedure luaL_newlib(L: Plua_State; lr: PluaL_Reg); inline; overload;
 procedure luaL_argcheck(L: Plua_State; cond: Boolean; arg: Integer; extramsg: PAnsiChar); inline;
 function luaL_checkstring(L: Plua_State; n: Integer): PAnsiChar; inline;
 function luaL_optstring(L: Plua_State; n: Integer; d: PAnsiChar): PAnsiChar; inline;
