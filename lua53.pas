@@ -148,8 +148,11 @@ type
    lua_Unsigned = UInt64;
   {$IFEND}
 {$ENDIF}
-   lua_Number   = Double;
 
+   Plua_Integer  = ^lua_Integer;
+   Plua_Unsigned = ^lua_Unsigned;
+
+   lua_Number   = Double;
    Plua_Number  = ^lua_Number;
 
    size_t = Cardinal;
