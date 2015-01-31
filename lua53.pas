@@ -396,7 +396,7 @@ type
       nparams: Byte;             (* (u) number of parameters *)
       isvararg: ByteBool;        (* (u) *)
       istailcall: ByteBool;      (* (t) *)
-      short_src: packed array[0..LUA_IDSIZE - 1] of Char; (* (S) *)
+      short_src: packed array[0..LUA_IDSIZE - 1] of AnsiChar; (* (S) *)
       (* private part *)
       i_ci: Pointer;             (* active function *)  // ptr to struct CallInfo
    end;
