@@ -380,12 +380,12 @@ const
    LUA_IDSIZE = 60;
 
 type
-   lua_Debug = record            (* activation record *)
+   lua_Debug = packed record     (* activation record *)
       event: Integer;
-      name: PAnsiChar;               (* (n) *)
-      namewhat: PAnsiChar;           (* (n) `global', `local', `field', `method' *)
-      what: PAnsiChar;               (* (S) `Lua', `C', `main', `tail'*)
-      source: PAnsiChar;             (* (S) *)
+      name: PAnsiChar;           (* (n) *)
+      namewhat: PAnsiChar;       (* (n) `global', `local', `field', `method' *)
+      what: PAnsiChar;           (* (S) `Lua', `C', `main', `tail'*)
+      source: PAnsiChar;         (* (S) *)
       currentline: Integer;      (* (l) *)
       linedefined: Integer;      (* (S) *)
       lastlinedefined: Integer;  (* (S) *)
@@ -393,7 +393,7 @@ type
       nparams: Byte;             (* (u) number of parameters *)
       isvararg: ByteBool;        (* (u) *)
       istailcall: ByteBool;      (* (t) *)
-      short_src: array[0..LUA_IDSIZE - 1] of Char; (* (S) *)
+      short_src: packed array[0..LUA_IDSIZE - 1] of Char; (* (S) *)
       (* private part *)
       i_ci: Pointer;             (* active function *)  // ptr to struct CallInfo
    end;
@@ -427,7 +427,7 @@ procedure lua_unref(L: Plua_State; ref: Integer); inline;
 procedure lua_getref(L: Plua_State; ref: Integer); inline;
 
 type
-   luaL_Reg = record
+   luaL_Reg = packed record
       name: PAnsiChar;
       func: lua_CFunction;
    end;
