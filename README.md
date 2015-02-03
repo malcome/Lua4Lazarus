@@ -8,7 +8,7 @@ See sample projects. (Needs lua53.dll, lua53.so, etc.)
 * New Lua 5.3 header unit for FPC.  
 * Sample of using data base(TDbf).  
 * Sample of using ActiveX.  
-* Sample of using module in Lua.  
+* Sample of using extension module in Lua.  
 * Sample of using thread.  
 * Sample of printing a report with drawing PDF.  
 
