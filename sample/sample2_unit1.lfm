@@ -1,0 +1,51 @@
+object Form1: TForm1
+  Left = 293
+  Height = 519
+  Top = 165
+  Width = 608
+  Caption = 'Form1'
+  ClientHeight = 519
+  ClientWidth = 608
+  LCLVersion = '1.5'
+  object Memo1: TMemo
+    Left = 12
+    Height = 342
+    Top = 8
+    Width = 510
+    Lines.Strings = (
+      'ie = CreateActiveXObject("InternetExplorer.Application")'
+      'ie.visible = true'
+      'while (ie.busy) do end'
+      'ie.Navigate2("http://www.google.com")'
+      'while (ie.busy) do end'
+      'while (ie.readyState ~= 4) do end'
+      'while (ie.document.readystate ~= "complete") do end'
+      'tags = ie.document.getElementsByTagName("a")'
+      'for t in pairs(tags) do'
+      '  print(t.innertext .. " = " .. t.HREF)'
+      'end'
+      'ie.Quit()'
+    )
+    ScrollBars = ssAutoBoth
+    TabOrder = 0
+    WordWrap = False
+  end
+  object Button1: TButton
+    Left = 528
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'RUN'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+  object Memo2: TMemo
+    Left = 12
+    Height = 154
+    Top = 360
+    Width = 510
+    ScrollBars = ssAutoBoth
+    TabOrder = 2
+    WordWrap = False
+  end
+end

@@ -9,7 +9,7 @@ See sample projects. (Needs lua53.dll, lua53.so, etc.)
 * Sample of using data base(TDbf).  
 * Sample of using ActiveX.  
 * Sample of using extension module in Lua.  
-* Sample of using thread.  
+* Sample of using multithread.  
 * Sample of printing a report with drawing PDF.  
 
 ##Contribution  

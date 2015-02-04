@@ -1,0 +1,66 @@
+object Form1: TForm1
+  Left = 305
+  Height = 399
+  Top = 235
+  Width = 608
+  Caption = 'Form1'
+  ClientHeight = 399
+  ClientWidth = 608
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poDesktopCenter
+  LCLVersion = '1.4.0.1'
+  object Button1: TButton
+    Left = 528
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'Add'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Memo1: TMemo
+    Left = 8
+    Height = 206
+    Top = 8
+    Width = 510
+    Lines.Strings = (
+      'my.print("Start: ", my.ID)'
+      'i = 0'
+      'while i < 100 do'
+      '  my.sleep(100) '
+      '  i = i + 1'
+      'end'
+      'my.print("Finish: ", my.ID)'
+    )
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+    WordWrap = False
+  end
+  object Memo2: TMemo
+    Left = 8
+    Height = 168
+    Top = 224
+    Width = 510
+    ScrollBars = ssAutoBoth
+    TabOrder = 2
+    WordWrap = False
+  end
+  object Label1: TLabel
+    Left = 528
+    Height = 20
+    Top = 48
+    Width = 10
+    Caption = '0'
+    Font.Height = -20
+    ParentColor = False
+    ParentFont = False
+  end
+  object Timer1: TTimer
+    Interval = 30000
+    OnTimer = Timer1Timer
+    left = 552
+    top = 104
+  end
+end

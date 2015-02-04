@@ -1,0 +1,116 @@
+object Form1: TForm1
+  Left = 234
+  Height = 388
+  Top = 158
+  Width = 541
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Form1'
+  ClientHeight = 388
+  ClientWidth = 541
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '1.5'
+  object Memo1: TMemo
+    Left = 16
+    Height = 72
+    Top = 48
+    Width = 512
+    Color = clBtnFace
+    TabOrder = 3
+  end
+  object ComboBox1: TComboBox
+    Left = 16
+    Height = 26
+    Top = 16
+    Width = 296
+    ItemHeight = 18
+    OnSelect = ComboBox1Select
+    Style = csDropDownList
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 319
+    Height = 21
+    Top = 16
+    Width = 59
+    Caption = 'Settings'
+    OnClick = Button2Click
+    TabOrder = 5
+  end
+  object Button1: TButton
+    Left = 16
+    Height = 25
+    Top = 352
+    Width = 75
+    Caption = 'Print'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+  object Button3: TButton
+    Left = 104
+    Height = 25
+    Top = 352
+    Width = 75
+    Caption = 'Preview'
+    OnClick = Button1Click
+    TabOrder = 2
+  end
+  object Memo2: TMemo
+    Left = 17
+    Height = 218
+    Top = 128
+    Width = 511
+    Lines.Strings = (
+      'function DrawFrame()'
+      '  P.units = "P" -- Pixel'
+      '  P.Pen.Style = "psSolid"'
+      '  P.Rectangle(0, 0, P.pageWidth, P.pageHeight)'
+      '  P.units = "M" -- 1/100mm(default)'
+      'end'
+      ''
+      'DrawFrame()'
+      'P.DrawImage(0, 0, 10000, 10000, "cheetah.jpg")'
+      'P.DrawImage(7000, 1000, 9000, 3000, "laz-logo.png")'
+      'P.DrawImage(7000, 3500, 9000, 5500, "lua-logo.gif")'
+      'P.Brush.Style = "bsClear"'
+      'P.Rectangle(0, 0, 10000, 10000)'
+      'P.Pen.Style = "psDot"'
+      'P.line(0, 2000, P.pageWidth, 2000)'
+      'P.Font.Size = 20'
+      'P.TextOut(2000, 3000, "ABCDEFG")'
+      'P.line(0, 4000, P.pageWidth, 4000)'
+      'P.brush.style = "bsSolid"'
+      'P.TextOut(3000, 5000, P.PageNumber)'
+      'P.NewPage()'
+      ''
+      'P.Pen.Color = "clRed"'
+      'DrawFrame()'
+      'P.DrawPDF(0, 0, P.PageWidth, P.PageHeight, "01.pdf")'
+      'P.Font.Style = "fsItalic, fsUnderline"'
+      'P.Font.Size = 10'
+      'P.TextOut(2000, 3000, "HIJKLMN")'
+      'P.Font.Style = ""'
+      'P.TextOut(3000, 5000, P.PageNumber)'
+      'P.NewPage()'
+      ''
+      'P.Pen.Color = "clBlue"'
+      'DrawFrame()'
+      'P.Font.Size = 40'
+      'y = 3000'
+      'P.TextOut(2000, y, "OPQRSTU")'
+      'y = y + P.TextHeight("Mg")'
+      'P.TextOut(2000, y, "VWXYZ")'
+      'y = y + P.TextHeight("Mg")'
+      'P.TextOut(3000, y, P.PageNumber)'
+      'P.NewPage()'
+    )
+    ParentFont = False
+    ScrollBars = ssAutoBoth
+    TabOrder = 0
+  end
+  object PrinterSetupDialog1: TPrinterSetupDialog
+    left = 384
+    top = 8
+  end
+end

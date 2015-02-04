@@ -1,0 +1,57 @@
+object Form1: TForm1
+  Left = 305
+  Height = 399
+  Top = 235
+  Width = 608
+  Caption = 'Form1'
+  ClientHeight = 399
+  ClientWidth = 608
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poDesktopCenter
+  LCLVersion = '1.2.6.0'
+  object Button1: TButton
+    Left = 528
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'Start'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Memo1: TMemo
+    Left = 8
+    Height = 206
+    Top = 8
+    Width = 510
+    Lines.Strings = (
+      'i = 1'
+      'while i < 100000 do'
+      '  my.SetCaption(i)'
+      '  i = i + 1 '
+      'end'
+      'my.print("Finish!")'
+    )
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+    WordWrap = False
+  end
+  object Memo2: TMemo
+    Left = 8
+    Height = 168
+    Top = 224
+    Width = 510
+    ScrollBars = ssAutoBoth
+    TabOrder = 2
+    WordWrap = False
+  end
+  object Label1: TLabel
+    Left = 544
+    Height = 12
+    Top = 176
+    Width = 6
+    Caption = '0'
+    ParentColor = False
+  end
+end

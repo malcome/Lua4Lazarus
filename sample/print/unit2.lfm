@@ -1,0 +1,125 @@
+object FormPreview: TFormPreview
+  Left = 276
+  Height = 450
+  Top = 134
+  Width = 632
+  Caption = 'FormPreview'
+  ClientHeight = 450
+  ClientWidth = 632
+  OnCreate = FormCreate
+  OnMouseDown = FormMouseDown
+  OnMouseMove = FormMouseMove
+  OnMouseUp = FormMouseUp
+  OnMouseWheelDown = FormMouseWheelDown
+  OnMouseWheelUp = FormMouseWheelUp
+  OnShow = FormShow
+  Position = poDesktopCenter
+  LCLVersion = '0.9.29'
+  object Panel1: TPanel
+    Left = 0
+    Height = 29
+    Top = 0
+    Width = 632
+    Align = alTop
+    ClientHeight = 29
+    ClientWidth = 632
+    ParentShowHint = False
+    TabOrder = 1
+    object ComboZoom: TComboBox
+      Left = 8
+      Height = 20
+      Hint = 'ÉYÅ[ÉÄ'
+      Top = 4
+      Width = 112
+      DropDownCount = 9
+      ItemHeight = 12
+      Items.Strings = (
+        '500%'
+        '400%'
+        '300%'
+        '200%'
+        '150%'
+        '100%'
+        '75%'
+        '50%'
+        '25%'
+        '10%'
+        'Page width'
+        'Whole page'
+      )
+      MaxLength = 4
+      OnKeyDown = ComboZoomKeyDown
+      OnSelect = ComboZoomSelect
+      TabOrder = 0
+    end
+    object PanelPage: TPanel
+      Left = 142
+      Height = 18
+      Top = 6
+      Width = 81
+      BevelOuter = bvLowered
+      Caption = 'PanelPage'
+      TabOrder = 1
+    end
+    object ScrollBar: TScrollBar
+      Left = 229
+      Height = 18
+      Hint = '?y?['
+      Top = 6
+      Width = 291
+      Anchors = [akTop, akLeft, akRight]
+      LargeChange = 10
+      Min = 1
+      PageSize = 0
+      ParentShowHint = False
+      Position = 1
+      ShowHint = True
+      TabOrder = 2
+      OnChange = ScrollBarChange
+    end
+    object ButtonPrint: TButton
+      Left = 544
+      Height = 20
+      Top = 4
+      Width = 65
+      Anchors = [akTop, akRight]
+      Caption = '&Print...'
+      OnClick = ButtonPrintClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+    end
+  end
+  object ScrollBox: TScrollBox
+    Left = 0
+    Height = 165
+    Top = 29
+    Width = 184
+    ClientHeight = 161
+    ClientWidth = 180
+    TabOrder = 0
+    TabStop = True
+    OnMouseDown = FormMouseDown
+    OnPaint = ScrollBoxPaint
+    object Image: TImage
+      Left = 0
+      Height = 41
+      Top = 0
+      Width = 42
+      DragCursor = 1
+      OnMouseDown = FormMouseDown
+    end
+  end
+  object PMenu: TPopupMenu
+    left = 560
+    top = 40
+    object MenuItem2: TMenuItem
+      Caption = '&All'
+      OnClick = MenuItem1Click
+    end
+    object MenuItem3: TMenuItem
+      Caption = '&Current page'
+      OnClick = MenuItem2Click
+    end
+  end
+end

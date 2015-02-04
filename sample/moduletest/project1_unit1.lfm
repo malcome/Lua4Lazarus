@@ -1,0 +1,58 @@
+object Form1: TForm1
+  Left = 305
+  Height = 399
+  Top = 235
+  Width = 608
+  Caption = 'Form1'
+  ClientHeight = 399
+  ClientWidth = 608
+  Position = poDesktopCenter
+  LCLVersion = '1.4.0.1'
+  object Button1: TButton
+    Left = 528
+    Height = 25
+    Top = 10
+    Width = 75
+    Caption = 'Go'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Memo1: TMemo
+    Left = 8
+    Height = 206
+    Top = 8
+    Width = 510
+    Lines.Strings = (
+      'mlua = require("mod_lua")'
+      'mlaz = require("mod_laz")'
+      ''
+      'print(mlua.WhoAreYou())'
+      'print(mlua.DareDesuka())'
+      ''
+      'print(mlaz.WhoAreYou())'
+      'print(mlaz.DareDesuka())'
+      'print(mlaz.test1)'
+      'print(mlaz.test2)'
+    )
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+    WordWrap = False
+  end
+  object Memo2: TMemo
+    Left = 8
+    Height = 168
+    Top = 224
+    Width = 510
+    ScrollBars = ssAutoBoth
+    TabOrder = 2
+    WordWrap = False
+  end
+  object Label1: TLabel
+    Left = 544
+    Height = 12
+    Top = 176
+    Width = 6
+    Caption = '0'
+    ParentColor = False
+  end
+end
