@@ -1,4 +1,4 @@
-# Lua for Lazalus
+# Lua for Lazarus
 
 Give [the Lua](http://www.lua.org/) script power to [the Lazarus](http://www.lazarus.freepascal.org/).  
 
@@ -22,3 +22,6 @@ See sample projects. (Needs [lua53.dll](../../releases/tag/R%23150205), lua53.so
 ##License  
 New BSD  
 Copyright(c)2010- Malcome@Japan All rights reserved.  
+
+##Links
+Old version is [here](https://code.google.com/p/lua4lazarus/).
