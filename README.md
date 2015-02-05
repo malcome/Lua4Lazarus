@@ -1,6 +1,6 @@
 # Lua for Lazalus
 
-Give the Lua script power to the Lazarus.  
+Give [the Lua](http://www.lua.org/) script power to [the Lazarus](http://www.lazarus.freepascal.org/).  
 
 ##Usage  
 See sample projects. (Needs lua53.dll, lua53.so, etc.)  
