@@ -18,7 +18,6 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
-    Label1: TLabel;
     Memo1: TMemo;
     Memo2: TMemo;
     procedure Button1Click(Sender: TObject);

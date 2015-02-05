@@ -47,12 +47,4 @@ object Form1: TForm1
     TabOrder = 2
     WordWrap = False
   end
-  object Label1: TLabel
-    Left = 544
-    Height = 12
-    Top = 176
-    Width = 6
-    Caption = '0'
-    ParentColor = False
-  end
 end
