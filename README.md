@@ -6,7 +6,7 @@ Give [the Lua](http://www.lua.org/) script power to [the Lazarus](http://www.laz
 See sample projects. (Needs [lua53.dll](../../releases/tag/R%23150205), lua53.so, etc.)  
 
 * New Lua 5.3 header unit for FPC.  
-* Sample of using data base(TDbf).  
+* Sample of using database(TDbf).  
 * Sample of using ActiveX.  
 * Sample of using extension module in Lua.  
 * Sample of using multithread.  
