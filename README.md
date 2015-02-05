@@ -3,7 +3,7 @@
 Give [the Lua](http://www.lua.org/) script power to [the Lazarus](http://www.lazarus.freepascal.org/).  
 
 ##Usage  
-See sample projects. (Needs [lua53.dll](../../releases/tag/R%23150205), lua53.so, etc.)  
+See sample projects. (Needs [lua53.dll](../../releases/tag/R150205), lua53.so, etc.)  
 
 * New Lua 5.3 header unit for FPC.  
 * Sample of using database(TDbf).  
