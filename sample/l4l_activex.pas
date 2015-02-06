@@ -417,23 +417,11 @@ begin
   if TVarData(p^).vtype <> varDispatch then Exit;
   id:= IDispatch(TVarData(p^).vDispatch);
   id._Release;
-  //IDispatch(p^):= nil;
-  //IDispatch(p^):= Unassigned;
 end;
 
 procedure DoCreateActiveXObject(L : Plua_State; id: IDispatch);
 var
   p: POleVariant;
-  (*
-  i: integer;
-  t: integer;
-  s: string;
-  ws: WideString;
-  ti: ITypeInfo;
-  ta: lPTypeAttr;
-  fd: lPFuncDesc;
-  hr: HRESULT;
-  *)
 begin
   id._AddRef;
   lua_newtable(L); //t:= lua_gettop(L);
@@ -449,57 +437,12 @@ begin
   lua_settable(L, -3);
   lua_setmetatable(L, -2);
   lua_settable(L, -3);
-  (*
-  hr:= id.GetTypeInfo(0, 0, ti);
-  if (hr = 0) and (ti <> nil) then begin
-    ti._AddRef;
-    try
-      ChkErr(L, ti.GetTypeAttr(ta));
-      try
-        for i := 0 to ta^.cFuncs - 1 do
-        begin
-          ChkErr(L, ti.GetFuncDesc(i, fd));
-          try
-            ChkErr(L, ti.GetDocumentation(fd^.memid, @ws, nil, nil, nil));
-            s := UTF8Encode(ws); ws:= '';
-            lua_pushstring(L, PChar(s));
-            lua_newtable(L);
-            lua_pushstring(L, FIELD_FN);
-            lua_pushstring(L, PChar(s));
-            lua_settable(L, -3);
-            lua_newtable(L);
-            lua_pushstring(L, '__call');
-            lua_pushcfunction(L, @call);
-            lua_settable(L, -3);
-            lua_pushstring(L, '__index');
-            lua_pushvalue(L, t); // SuperClass
-            lua_settable(L, -3);
-            lua_setmetatable(L, -2);
-            lua_settable(L, -3);
-          finally
-            ti.ReleaseFuncDesc(fd);
-          end;
-        end;
-      finally
-        ti.ReleaseTypeAttr(ta);
-      end;
-    finally
-      ti._Release;
-      ti:= Unassigned;
-    end;
-  end else if hr <> E_NOTIMPL then begin
-    ChkErr(L, hr, 'CreateActiveXObject');
-  end;
-  *)
   lua_pushstring(L, '__newindex');
   lua_pushcfunction(L, @NewIndex);
   lua_settable(L, -3);
   lua_pushstring(L, '__index');
   lua_pushcfunction(L, @Index);
   lua_settable(L, -3);
-  //lua_pushstring(L, '__call');
-  //lua_pushcfunction(L, @call);
-  //lua_settable(L, -3);
   lua_pushstring(L, '__pairs');
   lua_pushcfunction(L, @pairs);
   lua_settable(L, -3);
@@ -531,11 +474,6 @@ begin
   if ParamCount > 0 then begin
     Lua2Var(L, p, 1, False);
   end;
-  //if lua_getmetatable(L, -1) = 0 then lua_newtable(L);
-  //lua_pushstring(L, '__gc');
-  //lua_pushcfunction(L, @gc);
-  //lua_settable(L, -3);
-  //lua_setmetatable(L, -2);
   lua_settable(L, -3);
 
   lua_pushstring(L, '__newindex');
@@ -544,9 +482,6 @@ begin
   lua_pushstring(L, '__index');
   lua_pushcfunction(L, @Index);
   lua_settable(L, -3);
-  //lua_pushstring(L, '__call');
-  //lua_pushcfunction(L, @call);
-  //lua_settable(L, -3);
   lua_pushstring(L, '__pairs');
   lua_pushcfunction(L, @pairs);
   lua_settable(L, -3);
