@@ -424,7 +424,7 @@ var
   p: POleVariant;
 begin
   id._AddRef;
-  lua_newtable(L); //t:= lua_gettop(L);
+  lua_newtable(L);
 
   lua_newtable(L);
   lua_pushstring(L, FIELD_ID);
