@@ -425,10 +425,6 @@ const
 
    LUAL_NUMSIZES = sizeof(lua_Integer)*16 + sizeof(lua_Number);
 
-// compatibility with ref system
-procedure lua_unref(L: Plua_State; ref: Integer); inline;
-procedure lua_getref(L: Plua_State; ref: Integer); inline;
-
 type
    luaL_Reg = packed record
       name: PAnsiChar;
@@ -748,16 +744,6 @@ procedure lua_sethook(L: Plua_State; func: lua_Hook; mask: Integer; count: Integ
 function lua_gethook(L: Plua_State): lua_Hook; cdecl; external LUA_LIB_NAME;
 function lua_gethookmask(L: Plua_State): Integer; cdecl; external LUA_LIB_NAME;
 function lua_gethookcount(L: Plua_State): Integer; cdecl; external LUA_LIB_NAME;
-
-procedure lua_unref(L: Plua_State; ref: Integer);
-begin
-   luaL_unref(L, LUA_REGISTRYINDEX, ref);
-end;
-
-procedure lua_getref(L: Plua_State; ref: Integer);
-begin
-   lua_rawgeti(L, LUA_REGISTRYINDEX, ref);
-end;
 
 procedure luaL_checkversion_(L: Plua_State; ver: lua_Number; sz: size_t); cdecl; external LUA_LIB_NAME;
 
