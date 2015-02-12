@@ -8,9 +8,6 @@
 
     Note:
 
-    ToDo:
-      Event handling.
-
 }
 unit l4l_activex;
 
@@ -198,7 +195,7 @@ begin
         else begin
           ws := p^;
           s := UTF8Encode(ws);
-          lua_pushstring(L, PChar(s));
+          lua_pushstring(L, s);
         end;
       end;
     end else
@@ -227,7 +224,7 @@ begin
         else begin
           ws := ret;
           s := UTF8Encode(ws);
-          lua_pushstring(L, PChar(s));
+          lua_pushstring(L, s);
         end;
       end;
     end else begin
@@ -238,7 +235,7 @@ begin
     // Change Metatable for function call
     if lua_getmetatable(L, -1) = 0 then lua_newtable(L);
     lua_pushstring(L, FIELD_FN);
-    lua_pushstring(L, PChar(key));
+    lua_pushstring(L, key);
     lua_rawset(L, -3);
     lua_pushstring(L, FIELD_ID_PARENT);
     p:= lua_newuserdata(L, SizeOf(OleVariant));
@@ -252,7 +249,7 @@ begin
 
     if hr = DISP_E_MEMBERNOTFOUND then begin
       // Key is method, not property
-      lua_pushstring(L, PChar(key)); // key is Lower Case
+      lua_pushstring(L, key); // key is Lower Case
       lua_pushvalue(L, -2);
       lua_rawset(L, 1);
     end;
@@ -399,11 +396,60 @@ begin
     else{case} begin
       ws := ret;
       s := UTF8Encode(ws);
-      lua_pushstring(L, PChar(s));
+      lua_pushstring(L, s);
     end;
   end;
 
   Result := 1;
+end;
+
+function equal(L : Plua_State) : Integer; cdecl;
+var
+  i: integer;
+  p1, p2: POleVariant;
+  id: IDispatch;
+  v: OleVariant;
+  ti1, ti2: ITypeInfo;
+  ta1, ta2: lPTypeAttr;
+begin
+  Result:= 1;
+  lua_pushboolean(L, False);
+
+  if lua_type(L, 2) <> LUA_TTABLE then Exit;
+  lua_getmetatable(L, 2);
+  lua_getfield(L, -1, FIELD_ID);
+  if lua_isnil(L, -1) then begin
+    lua_pop(L, 2);
+    Exit;
+  end;
+  p1:= lua_touserdata(L, -1);
+  lua_pop(L, 2);
+  if TVarData(p1^).vtype <> varDispatch then Exit;
+  if IDispatch(TVarData(p1^).vdispatch).GetTypeInfo(0, 0, ti1) <> S_OK then Exit;
+  if ti1.GetTypeAttr(ta1) <> S_OK then Exit;
+  try
+    lua_getmetatable(L, 1);
+    lua_getfield(L, -1, FIELD_ID);
+    if lua_isnil(L, -1) then begin
+      lua_pop(L, 2);
+      Exit;
+    end;
+    p2:= lua_touserdata(L, -1);
+    lua_pop(L, 2);
+    if TVarData(p2^).vtype <> varDispatch then Exit;
+    if IDispatch(TVarData(p2^).vdispatch).GetTypeInfo(0, 0, ti2) <> S_OK then Exit;
+    if ti2.GetTypeAttr(ta2) <> S_OK then Exit;
+    try
+      if IsEqualIID(ta1^.GUID, ta2^.GUID) then begin
+        lua_pop(L, 1);
+        lua_pushboolean(L, True);
+      end;
+    finally
+      ti2.ReleaseTypeAttr(ta2);
+    end;
+  finally
+    ti1.ReleaseTypeAttr(ta1);
+  end;
 end;
 
 function iterator(L : Plua_State) : Integer; cdecl;
@@ -459,7 +505,7 @@ begin
       else begin
         ws := ret;
         s := UTF8Encode(ws);
-        lua_pushstring(L, PChar(s));
+        lua_pushstring(L, s);
       end;
     end;
   end else begin
@@ -533,6 +579,10 @@ begin
 
   lua_pushstring(L, '__index');
   lua_pushcfunction(L, @Index);
+  lua_settable(L, -3);
+
+  lua_pushstring(L, '__eq');
+  lua_pushcfunction(L, @equal);
   lua_settable(L, -3);
 
   lua_pushstring(L, '__pairs');
@@ -637,10 +687,11 @@ function TEventSink.Invoke(DispID: Integer; const IID: TGUID;
   LocaleID: Integer; Flags: Word; var Params; VarResult, ExcepInfo,
   ArgErr: Pointer): HRESULT; stdcall;
 var
-  //dispparams: TDispParams;
+  dispparams: TDispParams;
   name: WideString;
   name2: string;
   i: Integer;
+  v: OleVariant;
 begin
   Result := S_FALSE;
   if FInfo.GetDocumentation(DispId, @name, nil, nil, nil) <> S_OK then Exit;
@@ -651,20 +702,29 @@ begin
   if i >= 0 then begin
     lua_rawgeti(L, LUA_REGISTRYINDEX, Integer(EventList.Objects[i]));
 
-    // TODO: param & result
-    {
     dispparams := TDispParams(Params);
-    //逆順に入れる
+    // upsidedown!
     for i := dispparams.cArgs - 1 downto 0 do begin
       try
         v := OleVariant(dispparams.rgvarg^[i]);
       except
         VariantInit(TVarData(v));
       end;
-    end;
-    }
+      case VarType(v) of
+        varNull: lua_pushnil(L);
+        varSmallint,varInteger,varshortint,varByte,
+        varword,varlongword,varint64,varqword: lua_pushinteger(L, v);
+        varSingle,varDouble,vardecimal: lua_pushnumber(L, v);
+        varBoolean: lua_pushboolean(L, v);
+        varDispatch: DoCreateActiveXObject(L, v);
+        else begin
+          lua_pushstring(L, UTF8Encode(v));
+        end;
+      end; {case}
+    end; {for}
 
-    lua_pcall(L, 0{dispparams.cArgs}, 0{result}, 0);
+    lua_pcall(L, dispparams.cArgs, 0{result}, 0);
+    // TODO: result
   end;
   Result := S_OK;
 end;
@@ -708,6 +768,7 @@ begin
   ChkErr(L, cp_c.EnumConnectionPoints(enum));
   if Assigned(enum) then begin
     enum.Reset;
+    i:= 0;
     while enum.Next(1, cp, @fetched) = S_OK do begin
       if fetched = 1 then begin
         if cp.GetConnectionInterface(iid) <> S_OK then continue;
