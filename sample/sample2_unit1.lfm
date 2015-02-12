@@ -6,7 +6,7 @@ object Form1: TForm1
   Caption = 'Form1'
   ClientHeight = 519
   ClientWidth = 608
-  LCLVersion = '1.5'
+  LCLVersion = '1.4.0.1'
   object Memo1: TMemo
     Left = 12
     Height = 342
@@ -14,16 +14,30 @@ object Form1: TForm1
     Width = 510
     Lines.Strings = (
       'ie = CreateActiveXObject("InternetExplorer.Application")'
+      ''
+      'ie.DocumentComplete = function ()'
+      '  print("Document Complete!")'
+      'end'
+      ''
+      'ie.DownloadComplete = function ()'
+      '  print("Download Complete!")'
+      'end'
+      ''
       'ie.visible = true'
       'while (ie.busy) do end'
       'ie.Navigate2("http://www.google.com")'
       'while (ie.busy) do end'
       'while (ie.readyState ~= 4) do end'
       'while (ie.document.readystate ~= "complete") do end'
+      'ie.document.onmouseover = function () print("TEST") end'
       'tags = ie.document.getElementsByTagName("a")'
       'for t in pairs(tags) do'
       '  print(t.innertext .. " = " .. t.HREF)'
       'end'
+      ''
+      'ie.DocumentComplete = nil'
+      'ie.DownloadComplete = nil'
+      ''
       'ie.Quit()'
     )
     ScrollBars = ssAutoBoth
