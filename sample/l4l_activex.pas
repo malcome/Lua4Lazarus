@@ -66,6 +66,7 @@ type
   end;
 
 function call(L : Plua_State) : Integer; cdecl; forward;
+function gc_ID(L : Plua_State) : Integer; cdecl; forward;
 procedure DoCreateActiveXObject(L : Plua_State; id: IDispatch); forward;
 
 procedure ChkErr(L : Plua_State; Val: HResult; const prop: string='');
@@ -237,10 +238,17 @@ begin
     lua_pushstring(L, FIELD_FN);
     lua_pushstring(L, key);
     lua_rawset(L, -3);
+
     lua_pushstring(L, FIELD_ID_PARENT);
     p:= lua_newuserdata(L, SizeOf(OleVariant));
     VariantInit(TVarData(p^));
     p^:= id;
+    if lua_getmetatable(L, -1) = 0 then lua_newtable(L);
+    lua_pushstring(L, '__gc');
+    lua_pushcfunction(L, @gc_ID);
+    lua_settable(L, -3);
+    lua_setmetatable(L, -2);
+
     lua_rawset(L, -3);
     lua_pushstring(L, '__call');
     lua_pushcfunction(L, @call);
