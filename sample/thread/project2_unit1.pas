@@ -60,7 +60,6 @@ type
     procedure Execute; override;
   public
     property Terminated;
-    procedure Sync(AMethod: TThreadMethod);
     constructor Create(aL: plua_state); overload;
     destructor Destroy; override;
   end;
@@ -219,11 +218,6 @@ begin
   end;
 end;
 
-procedure TLuaThread.Sync(AMethod: TThreadMethod);
-begin
-  Synchronize(AMethod);
-end;
-
 constructor TLuaThread.Create(aL: plua_state);
 begin
   L := aL;
@@ -273,13 +267,8 @@ begin
 end;
 
 function TLuaMyObject.l4l_print: integer;
-var
-  p: PLuaThread;
 begin
-  lua_getfield(LS, LUA_REGISTRYINDEX, THREAD_VAR_NAME);
-  p:= lua_touserdata(LS, -1);
-  Lua_pop(LS, 1);
-  p^.Sync(@DoPrint);
+  TThread.Synchronize(nil, @DoPrint);
   Result := 0;
 end;
 

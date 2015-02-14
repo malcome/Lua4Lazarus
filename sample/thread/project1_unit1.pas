@@ -53,7 +53,6 @@ type
     procedure Execute; override;
   public
     property Terminated;
-    procedure Sync(AMethod: TThreadMethod);
     constructor Create(aL: plua_state); overload;
     destructor Destroy; override;
   end;
@@ -166,11 +165,6 @@ begin
   end;
 end;
 
-procedure TLuaThread.Sync(AMethod: TThreadMethod);
-begin
-  Synchronize(AMethod);
-end;
-
 constructor TLuaThread.Create(aL: plua_state);
 begin
   L := aL;
@@ -215,13 +209,13 @@ end;
 
 function TLuaMyObject.l4l_print: integer;
 begin
-  TLuaThread(Form1.FThread).Sync(@DoPrint);
+  TThread.Synchronize(nil, @DoPrint);
   Result := 0;
 end;
 
 function TLuaMyObject.l4l_SetCaption: integer;
 begin
-  TLuaThread(Form1.FThread).Sync(@DoSetCaption);
+  TThread.Synchronize(nil, @DoSetCaption);
   Result := 0;
 end;
 
