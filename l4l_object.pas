@@ -8,7 +8,7 @@
 
     Version History:
       1.53.150205 by Malcome Japan.
-        - Test Lazarus 1.4RC (FPC 2.6.4), Lazarus 1.5 (FPC 3.0.1)
+        - Test Lazarus 1.4RC1 (FPC 2.6.4), Lazarus 1.5 (FPC 3.0.1)
         - for Lua 5.3
 
       1.52.0 by Malcome Japan.
