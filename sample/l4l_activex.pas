@@ -413,10 +413,7 @@ end;
 
 function equal(L : Plua_State) : Integer; cdecl;
 var
-  i: integer;
   p1, p2: POleVariant;
-  id: IDispatch;
-  v: OleVariant;
   ti1, ti2: ITypeInfo;
   ta1, ta2: lPTypeAttr;
 begin
