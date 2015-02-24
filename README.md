@@ -22,6 +22,7 @@ See sample projects. (Needs [lua53.dll](../../releases/tag/R150205) or liblua53.
 ##License  
 New BSD  
 Copyright(c)2010- Malcome@Japan All rights reserved.  
+I dedicate this code to my late father.  
 
 ##Links
 Old version is [here](https://code.google.com/p/lua4lazarus/).
