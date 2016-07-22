@@ -27,7 +27,7 @@ procedure DrawPDF(stream: TStream; LPO: TLuaPrintObject; page: integer;
 
 implementation
 uses
-  LCLProc, graphics, contnrs, paszlib;
+  LCLProc, LazUTF8, graphics, contnrs, paszlib;
 
 const
   PRUN_NAME = 'P_';
