@@ -504,6 +504,8 @@ begin
   Result := '"';
   for i:= 1 to Length(s) do begin
     case s[i] of
+      #$0a: Result:=Result + '\r';
+      #$0d: Result:=Result + '\n';
       '"': Result:= Result + '\"';
       '\': Result:= Result + '\\';
       else Result := Result + s[i];
