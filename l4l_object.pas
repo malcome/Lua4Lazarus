@@ -201,7 +201,8 @@ begin
   if lua_isnil(L, 3) then begin
     i := 0;
   end else begin
-    lua_getfield(L, 1, FIELD_IC);
+    lua_pushstring(L, FIELD_IC);
+    lua_rawget(L, 1);
     i:= lua_tointeger(L, -1) + 1;
   end;
   lua_pushstring(L, FIELD_IC);
