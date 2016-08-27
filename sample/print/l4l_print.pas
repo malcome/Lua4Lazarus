@@ -400,7 +400,9 @@ begin
   PopCanvas;
   FCanvas:= bmp.Canvas;
   FCanvas.Font.PixelsPerInch:= Printer.YDPI;
-  FCanvas.Font.Size:= FCanvas.Font.Size;
+  // We need to set FChanged:=true
+  FCanvas.Font.Size:=FCanvas.Font.Size-1;
+  FCanvas.Font.Size:=FCanvas.Font.Size+1;
   PushCanvas;
 end;
 
