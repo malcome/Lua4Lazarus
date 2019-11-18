@@ -8,14 +8,8 @@ unit Lua4Lazarus;
 interface
 
 uses
-  l4l_object, lua53, LazarusPackageIntf;
+  l4l_object, lua53;
 
 implementation
 
-procedure Register;
-begin
-end;
-
-initialization
-  RegisterPackage('Lua4Lazarus', @Register);
 end.

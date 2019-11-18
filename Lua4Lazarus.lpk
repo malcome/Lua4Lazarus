@@ -3,14 +3,18 @@
   <Package Version="4">
     <PathDelim Value="\"/>
     <Name Value="Lua4Lazarus"/>
-    <Type Value="RunAndDesignTime"/>
+    <Author Value="malcome@github"/>
     <CompilerOptions>
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)\"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
+    <Description Value="Lua 5.3 For Lazarus"/>
+    <License Value="New BSD
+Copyright(c)2010- Malcome@Japan All rights reserved.
+I dedicate this code to my late father."/>
     <Version Minor="1" Build="1"/>
     <Files Count="2">
       <Item1>
