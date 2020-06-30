@@ -284,7 +284,7 @@ function lua_gettable(L: Plua_State; idx: Integer): Integer; cdecl;
 function lua_getfield(L: Plua_state; idx: Integer; k: PAnsiChar): Integer; cdecl;
 function lua_geti(L: Plua_State; idx: Integer; n: lua_Integer): Integer cdecl;
 function lua_rawget(L: Plua_State; idx: Integer): Integer; cdecl;
-function lua_rawgeti(L: Plua_State; idx, n: Integer): Integer; cdecl;
+function lua_rawgeti(L: Plua_State; idx: Integer; n: lua_Integer): Integer; cdecl;
 function lua_rawgetp(L: Plua_State; idx: Integer; p: Pointer): Integer; cdecl;
 
 procedure lua_createtable(L: Plua_State; narr, nrec: Integer); cdecl;
@@ -591,7 +591,7 @@ function lua_gettable(L: Plua_State; idx: Integer): Integer; cdecl; external LUA
 function lua_getfield(L: Plua_state; idx: Integer; k: PAnsiChar): Integer; cdecl; external LUA_LIB_NAME;
 function lua_geti(L: Plua_State; idx: Integer; n: lua_Integer): Integer cdecl; external LUA_LIB_NAME;
 function lua_rawget(L: Plua_State; idx: Integer): Integer; cdecl; external LUA_LIB_NAME;
-function lua_rawgeti(L: Plua_State; idx, n: Integer): Integer; cdecl; external LUA_LIB_NAME;
+function lua_rawgeti(L: Plua_State; idx: Integer; n: lua_Integer): Integer; cdecl; external LUA_LIB_NAME;
 function lua_rawgetp(L: Plua_State; idx: Integer; p: Pointer): Integer; cdecl; external LUA_LIB_NAME;
 procedure lua_createtable(L: Plua_State; narr, nrec: Integer); cdecl; external LUA_LIB_NAME;
 function lua_newuserdata(L: Plua_State; sz: size_t): Pointer; cdecl; external LUA_LIB_NAME;
