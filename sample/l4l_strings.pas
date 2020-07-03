@@ -14,7 +14,7 @@ unit l4l_strings;
 interface
 
 uses
-  Classes, SysUtils, lua53, l4l_object;
+  Classes, SysUtils, lua54, l4l_object;
 
 type
 

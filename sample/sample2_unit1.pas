@@ -27,7 +27,7 @@ var
 
 implementation
 uses
-  Lua53, l4l_activex;
+  Lua54, l4l_activex;
 
 {$R *.lfm}
 

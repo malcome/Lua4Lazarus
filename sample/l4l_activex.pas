@@ -16,7 +16,7 @@ unit l4l_activex;
 interface
 
 uses
-  Classes, SysUtils, lua53;
+  Classes, SysUtils, lua54;
 
 function CreateActiveXObject(L : Plua_State) : Integer; cdecl;
 function CreateRefType(L : Plua_State) : Integer; cdecl;

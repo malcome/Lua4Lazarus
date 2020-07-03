@@ -7,6 +7,10 @@
       Copyright(c)2010- Malcome@Japan All rights reserved.
 
     Version History:
+      1.54.200703 by Malcome Japan.
+        - Test Lazarus 2.0.8 (FPC 3.0.4)
+        - for Lua 5.4
+
       1.53.150205 by Malcome Japan.
         - Test Lazarus 1.4RC1 (FPC 2.6.4), Lazarus 1.5 (FPC 3.0.1)
         - for Lua 5.3
@@ -30,7 +34,7 @@ unit l4l_object;
 interface
 
 uses
-  Classes, SysUtils, lua53;
+  Classes, SysUtils, lua54;
 
 type
 

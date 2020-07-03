@@ -35,7 +35,7 @@ var
 
 implementation
 uses
-  lua53, Printers, Unit2, l4l_object, l4l_print;
+  lua54, Printers, Unit2, l4l_object, l4l_print;
 
 {$R *.lfm}
 

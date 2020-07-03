@@ -18,7 +18,7 @@ interface
 
 uses
   Classes, SysUtils, contnrs, graphics, printers, types,
-  lua53, l4l_object;
+  lua54, l4l_object;
 
 type
 

@@ -14,7 +14,7 @@ unit l4l_myutils;
 interface
 
 uses
-  Classes, SysUtils, Dialogs, lua53, l4l_object;
+  Classes, SysUtils, Dialogs, lua54, l4l_object;
 
 type
 

@@ -32,7 +32,7 @@ var
 
 implementation
 uses
-  Lua53, l4l_object, l4l_strings, l4l_myutils;
+  Lua54, l4l_object, l4l_strings, l4l_myutils;
 
 {$R *.lfm}
 

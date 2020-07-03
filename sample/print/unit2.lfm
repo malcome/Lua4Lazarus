@@ -13,8 +13,8 @@ object FormPreview: TFormPreview
   OnMouseWheelDown = FormMouseWheelDown
   OnMouseWheelUp = FormMouseWheelUp
   OnShow = FormShow
-  Position = poDesktopCenter
-  LCLVersion = '0.9.29'
+  Position = poWorkAreaCenter
+  LCLVersion = '2.0.8.0'
   object Panel1: TPanel
     Left = 0
     Height = 29
@@ -27,12 +27,12 @@ object FormPreview: TFormPreview
     TabOrder = 1
     object ComboZoom: TComboBox
       Left = 8
-      Height = 20
-      Hint = 'ÉYÅ[ÉÄ'
+      Height = 23
+      Hint = '„Ç∫„Éº„É†'
       Top = 4
       Width = 112
       DropDownCount = 9
-      ItemHeight = 12
+      ItemHeight = 15
       Items.Strings = (
         '500%'
         '400%'
@@ -95,6 +95,8 @@ object FormPreview: TFormPreview
     Height = 165
     Top = 29
     Width = 184
+    HorzScrollBar.Page = 42
+    VertScrollBar.Page = 41
     ClientHeight = 161
     ClientWidth = 180
     TabOrder = 0

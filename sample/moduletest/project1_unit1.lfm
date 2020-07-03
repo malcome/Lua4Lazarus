@@ -6,8 +6,8 @@ object Form1: TForm1
   Caption = 'Form1'
   ClientHeight = 399
   ClientWidth = 608
-  Position = poDesktopCenter
-  LCLVersion = '1.4.0.1'
+  Position = poWorkAreaCenter
+  LCLVersion = '2.1.0.0'
   object Button1: TButton
     Left = 528
     Height = 25

@@ -5,7 +5,7 @@ library mod_laz;
 uses
   Classes
   { you can add units after this }
-  , lua53, l4l_object;
+  , lua54, l4l_object;
 
 type
 

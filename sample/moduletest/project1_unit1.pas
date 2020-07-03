@@ -32,7 +32,7 @@ var
 
 implementation
 uses
-  Lua53;
+  Lua54;
 
 {$R *.lfm}
 
