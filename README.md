@@ -3,9 +3,9 @@
 Give [the Lua](http://www.lua.org/) script power to [the Lazarus](http://www.lazarus.freepascal.org/).  
 
 ##Usage  
-See sample projects. (Needs [lua53.dll](../../releases/tag/R150205) or liblua53.so)  
+See sample projects. (Needs lua54.dll or liblua54.so)  
 
-* New Lua 5.3 header unit for FPC.  
+* New Lua 5.4 header unit for FPC.  
 * Sample of using database(TDbf).  
 * Sample of using ActiveX.  
 * Sample of using extension module in Lua.  
