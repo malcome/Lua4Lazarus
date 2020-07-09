@@ -2,7 +2,7 @@
 
 Give [the Lua](http://www.lua.org/) script power to [the Lazarus](http://www.lazarus.freepascal.org/).  
 
-##Usage  
+## Usage  
 See sample projects. (Needs lua54.dll or liblua54.so)  
 
 * New Lua 5.4 header unit for FPC.  
@@ -12,17 +12,17 @@ See sample projects. (Needs lua54.dll or liblua54.so)
 * Sample of using multithread.  
 * Sample of printing a report with drawing PDF.  
 
-##Contribution  
+## Contribution  
 1. Fork it  
 2. Create your feature branch  
 3. Commit your changes  
 4. Push to the branch  
 5. Create new Pull Request
 
-##License  
+## License  
 New BSD  
 Copyright(c)2010- Malcome@Japan All rights reserved.  
 I dedicate this code to my late father.  
 
-##Links
+## Links
 Old version is [here](https://code.google.com/p/lua4lazarus/).
