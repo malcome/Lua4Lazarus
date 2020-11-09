@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <PathDelim Value="\"/>
+    <Name Value="Lua4Lazarus"/>
+    <Author Value="malcome@github"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Description Value="Lua 5.3 For Lazarus"/>
+    <License Value="New BSD
+Copyright(c)2010- Malcome@Japan All rights reserved.
+I dedicate this code to my late father."/>
+    <Version Minor="1" Build="1"/>
+    <Files Count="2">
+      <Item1>
+        <Filename Value="l4l_object.pas"/>
+        <UnitName Value="l4l_object"/>
+      </Item1>
+      <Item2>
+        <Filename Value="lua53.pas"/>
+        <UnitName Value="lua53"/>
+      </Item2>
+    </Files>
+    <RequiredPkgs Count="1">
+      <Item1>
+        <PackageName Value="FCL"/>
+      </Item1>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>
